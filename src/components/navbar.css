@@ -1,0 +1,18 @@
+.navItems ul{
+    display: flex;
+  justify-content: space-between;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+    /* Any other CSS you want */
+}
+.navItems li {
+    display: inline-block;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.logo{
+    display: inline;
+}

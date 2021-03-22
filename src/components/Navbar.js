@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './navbar.css';
 import Logo from "./Logo";
 
 export default class Navbar extends Component {
@@ -9,18 +10,21 @@ export default class Navbar extends Component {
                     <div className="logo"><Logo /></div>
                     <div className="navItems">
                         <ul>
-                        <li>home</li>
-                        <li>product</li>
-                        <li>about us</li>
-                        <li>contact</li>
-                        
+                            <li>home</li>
+                            <li>product</li>
+                            <li>about us</li>
+                            <li>contact</li>
+                            <li>
+                                <div className="settings">
+                                    <div>Settings Icon</div>
+                                    <div className="hiddenMenu"></div>
+                                </div>
+                            </li>
                         </ul>
-                        <div className="settings">
-                        <div>Settings Icon</div>
-                        <div className="hiddenMenu">
+                        
 
-                        </div>
-                        </div>
+                        
+                       
                     </div>
                     </div>
             </div>

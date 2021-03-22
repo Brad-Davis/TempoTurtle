@@ -4,6 +4,7 @@ import HomeScreen from "../components/HomeScreen";
 import Product from "../components/Product";
 import About from "../components/About";
 import Contact from "../components/Contact";
+import './index.css'
 
 export default function Home() {
   return <div>
