@@ -5,8 +5,10 @@ export default class Product extends Component {
     render() {
         return (
             <div>
-                <div className="video-responsive">
-                    <iframe width="420" height="315" src="https://www.youtube.com/embed/fdtqqyeKRJk" frameborder="0" allowfullscreen></iframe>
+                <div className="videoContainer">
+                    <div className="video-responsive">
+                        <iframe width="420" height="315" src="https://www.youtube.com/embed/fdtqqyeKRJk" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div>
                     <div>
