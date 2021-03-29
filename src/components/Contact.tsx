@@ -5,7 +5,7 @@ export default class Contact extends Component {
     render() {
         return (
             <div>
-                <h1>contact us</h1>
+                <h1 style={{marginTop: '2em', marginBottom: "0.5em", fontSize: "4rem"}} className="title textCenter">contact us</h1>
                 <div>
                     <ContactBar />
                 </div>

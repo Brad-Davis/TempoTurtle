@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './navbar.css';
 import Logo from "./Logo";
+import Settings from './Settings';
 
 export default class Navbar extends Component {
     render() {
@@ -16,8 +17,8 @@ export default class Navbar extends Component {
                             <li>contact</li>
                             <li>
                                 <div className="settings">
-                                    <div>Settings Icon</div>
-                                    <div className="hiddenMenu"></div>
+                                    <Settings />
+                                    
                                 </div>
                             </li>
                         </ul>

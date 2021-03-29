@@ -1,0 +1,53 @@
+svg:hover path{
+    fill: #5CDB95;
+}
+path{
+    transition: fill 0.5s ease;
+}
+
+.svgBackground{
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    border-radius: 1em 1em 0 0;
+    margin-top: -5px;
+    z-index: 1;
+    transition: background-color 0.4s ease;
+    
+}
+
+
+
+.settingsMenu{
+    width: 300px;
+    height: 300px;
+    background-color: #c4c4c4;
+    padding: 0.5em;
+    color: black !important;
+    position: absolute;
+    margin-left: -240px;
+    visibility: hidden;
+    z-index: 1;
+    border-radius: 1em 0 1em 1em;
+    opacity: 0;
+    /* box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.settingsMenu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.svgBackground.active {
+    background-color: #c4c4c4;
+    
+}
+
+.settingsMenu div{
+    width: 100%;
+    
+}
+
+

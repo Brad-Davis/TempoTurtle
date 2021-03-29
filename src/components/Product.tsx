@@ -10,15 +10,15 @@ export default class Product extends Component {
                         <iframe width="420" height="315" src="https://www.youtube.com/embed/fdtqqyeKRJk" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        human centric design
+                <div className="row container">
+                    <div className="col title threeColTitle">
+                        human <br/> centric <br/> design
                     </div>
-                    <div>
-                        no music theory needed
+                    <div className="col title threeColTitle">
+                        no music <br/> theory <br/> needed
                     </div>
-                    <div>
-                        just jam
+                    <div className="col title threeColTitle">
+                        jam <br/> away <br/> anywhere
                     </div>
                 </div>
                 <div>
