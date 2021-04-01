@@ -5,18 +5,25 @@
   padding-inline-end: 10px;
     /* Any other CSS you want */
 }
-.navItems li {
+.navItems li{
     display: inline-block;
-    transition: color 0.5s ease;
-    font-size: 2rem;
+    
     margin-left: 1em;
     margin-right: 1em;
+    
+}
+
+.navItems a{
     cursor: pointer;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    font-size: 2rem;
+    color: black;
 }
 
 
 
-.navItems li:hover{
+.navItems a:hover{
     color: #5CDB95;
 }
 

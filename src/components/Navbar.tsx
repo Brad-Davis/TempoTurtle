@@ -2,23 +2,28 @@ import React, { Component } from 'react'
 import './navbar.css';
 import Logo from "./Logo";
 import Settings from './Settings';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
-export default class Navbar extends Component {
+type NavbarProps = {
+    themeToggler: Function,
+    theme: String,
+};
+type NavbarState = {};
+
+export default class Navbar extends Component<NavbarProps, NavbarState> {
     render() {
         return (
             <div>
                 <div className="navbar">
-                    <div className="logo"><Logo /></div>
+                    <div className="logo"><Logo theme={this.props.theme}/></div>
                     <div className="navItems">
                         <ul>
-                            <li>home</li>
-                            <li>product</li>
-                            <li>about us</li>
-                            <li>contact</li>
+                            <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#product")}>product</a></li>
+                            <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#about")}>about us</a></li>
+                            <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#contact")}>contact</a></li>
                             <li>
                                 <div className="settings">
-                                    <Settings />
-                                    
+                                    <Settings theme={this.props.theme} themeToggler={this.props.themeToggler}/>
                                 </div>
                             </li>
                         </ul>

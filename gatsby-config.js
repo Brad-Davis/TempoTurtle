@@ -8,7 +8,7 @@ module.exports = {
   /* Your site config here */
   plugins: [
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`, 
       options: {
         fonts: [
           `Fascinate`,
@@ -16,6 +16,7 @@ module.exports = {
         ],
         display: 'swap'
       }
-    }
+    },
+    `gatsby-plugin-smoothscroll`, `gatsby-plugin-styled-components`
   ],
-}
+};

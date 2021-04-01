@@ -1,40 +1,82 @@
 import React, { Component, useState, useMemo, useRef } from "react"
 import * as THREE from "three"
-import { useLoader } from 'react-three-fiber'
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-class ThreeModel extends Component {
+type ThreeModelState = {
+    scene: THREE.Scene,
+}
+type ThreeModelProps = {
+    background: String,
+}
+
+//all the errors in this file are due to the lack of typing info :)
+class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
+    private mount: React.RefObject<HTMLDivElement>
+
+    //constructor needs to explicitly take props and pass to super
+    //otherwise you can't access props thorought the component
+    //idk why lmao react. -w
+
+    constructor(props: ThreeModelProps) {
+        super(props);
+        this.mount = React.createRef();
+        ThreeModelState: this.state = {
+            scene: new THREE.Scene(),
+        };
+    }
+
+    //load geometry once (is heavy) > memo it
+    //rerender scene as needed
+    componentDidUpdate(prevProps) {
+        if(!prevProps.background || prevProps.background !== this.props.background){
+            //darkmode
+            if(this.props.background === "dark"){
+                this.state.scene.background = new THREE.Color('black');
+            }
+            else{ //light mode
+                this.state.scene.background = new THREE.Color('white');
+            }
+        }
+    }
+
+    
+
     componentDidMount() {
+        let scene = this.state.scene;
+        //we need to do this, because componentDidUpdate is only called on update and not on first render
+        if(this.props.background === "dark"){
+            scene.background = new THREE.Color('black');
+        }
+        else{
+            scene.background = new THREE.Color('white');
+        }
 
-        let scene = new THREE.Scene()
-        scene.background = new THREE.Color('white');
         const loader = new GLTFLoader();
-        let camera = new THREE.PerspectiveCamera(75, this.mount.offsetWidth / this.mount.offsetHeight, 0.1, 1000)
+        let camera = new THREE.PerspectiveCamera(75, this.mount.current.offsetWidth / this.mount.current.offsetHeight, 0.1, 1000)
         let renderer = new THREE.WebGLRenderer();
+        const controls = new OrbitControls( camera, renderer.domElement );
+        renderer.setSize(this.mount.current.offsetWidth, this.mount.current.offsetHeight)
+        //needs to be an arrow function because this ref
+        let onWindowResize =  () => {
 
-        renderer.setSize(this.mount.offsetWidth, this.mount.offsetHeight)
-        const mount = this.mount;
-        let onWindowResize = function () {
-
-            camera.aspect = mount.offsetWidth / mount.offsetHeight;
+            camera.aspect = this.mount.current.offsetWidth / this.mount.current.offsetHeight;
             camera.updateProjectionMatrix();
 
-            renderer.setSize(mount.offsetWidth, mount.offsetHeight);
+            renderer.setSize(this.mount.current.offsetWidth, this.mount.current.offsetHeight);
 
         }
 
-        this.mount.appendChild(renderer.domElement)
+        this.mount.current.appendChild(renderer.domElement)
         const skyColor = 0x5CDB95;  // light blue
         const groundColor = 0x000000;  // brownish orange
         const intensity = 2;
         const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
 
-        loader.load('/bradpadWeld.gltf', function (gltf) {
-            const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
-            const mesh = new THREE.Mesh(gltf.sceney, material);
-            scene.add(mesh);
+        loader.load('/bradpad_welded.gltf', function (gltf) {
             const box = new THREE.Box3().setFromObject(gltf.scene);
+            //center does not officially exist
             box.center(gltf.scene.position);
             gltf.scene.position.multiplyScalar(- 1);
             const center = box.getCenter(new THREE.Vector3());
@@ -53,12 +95,12 @@ class ThreeModel extends Component {
                 // gltf.scene.rotation.y += 0.01
                 pivot.rotation.y += 0.01;
                 pivot.rotation.x += 0.01;
+                controls.update();
+
                 renderer.render(scene, camera)
             }
             animate()
             window.addEventListener('resize', onWindowResize, false);
-
-            
 
         }, undefined, function (error) {
 
@@ -69,11 +111,10 @@ class ThreeModel extends Component {
         // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
         // const cube = new THREE.Mesh(geometry, material)
         // scene.add(cube)
-
     }
     render() {
         return (
-            <div ref={ref => (this.mount = ref)} style={{ width: `100%`, height: `60vh` }}></div>
+            <div ref={this.mount} style={{ cursor: 'pointer', width: `100%`, height: `60vh` }}></div>
         );
     }
 

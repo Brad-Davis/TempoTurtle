@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import ContactBar from "./ContactBar";
 
-export default class Contact extends Component {
+type ContactProps = {
+    theme: String
+};
+
+type ContactState = {};
+
+export default class Contact extends Component<ContactProps, ContactState> {
     render() {
         return (
-            <div>
+            <div id="contact">
                 <h1 style={{marginTop: '2em', marginBottom: "0.5em", fontSize: "4rem"}} className="title textCenter">contact us</h1>
                 <div>
-                    <ContactBar />
+                    <ContactBar theme={this.props.theme}/>
                 </div>
             </div>
         )

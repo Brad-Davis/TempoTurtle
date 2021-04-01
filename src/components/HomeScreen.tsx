@@ -3,11 +3,11 @@ import ThreeModel from './ThreeModel';
 
 
 
-function HomeScreen() {
+function HomeScreen(props) {
   return (
-    <div>
+    <div id="home">
       <div>
-        <ThreeModel />
+        <ThreeModel background={props.background} />
       </div>
       <div>
         <h1 className="title textCenter">bradpad</h1>

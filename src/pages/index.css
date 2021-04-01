@@ -1,6 +1,7 @@
 body{
     font-family: 'Open Sans', sans-serif;
     color: black;
+    overflow-x: hidden;
 }
 
 .title{
@@ -20,9 +21,24 @@ h3{
     text-align: center;
 }
 
+
+
 .container{
     width: 80%;
     margin: 0 auto;
+}
+
+@font-face {
+    font-family: "Open Dyslexic";
+    src: url("../../static/OpenDyslexic-Regular.otf");
+}
+
+.dyslexiaFont{
+    font-family: "Open Dyslexic";
+}
+
+.bigFont{
+    font-size: 48px !important;
 }
 
 @media only screen and (max-width: 1100px) {
