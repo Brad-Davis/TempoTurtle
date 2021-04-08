@@ -77,7 +77,7 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
         loader.load('/bradpad_welded.gltf', function (gltf) {
             const box = new THREE.Box3().setFromObject(gltf.scene);
             //center does not officially exist
-            box.center(gltf.scene.position);
+            box.getCenter(gltf.scene.position);
             gltf.scene.position.multiplyScalar(- 1);
             const center = box.getCenter(new THREE.Vector3());
             var pivot = new THREE.Group();
