@@ -21,7 +21,7 @@ export default function Home() {
       <Navbar themeToggler={themeToggler} theme={theme}/>
       <HomeScreen background={theme}/>
       <Product />
-      <About />
+      <About theme={theme}/>
       <Contact theme={theme}/>
     </ThemeProvider>
   </div>

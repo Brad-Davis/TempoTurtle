@@ -1,6 +1,6 @@
 import React, { Component, useState, useMemo, useRef } from "react"
 import * as THREE from "three"
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 type ThreeModelState = {
@@ -13,6 +13,7 @@ type ThreeModelProps = {
 //all the errors in this file are due to the lack of typing info :)
 class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
     private mount: React.RefObject<HTMLDivElement>
+    private cover: React.RefObject<HTMLDivElement>
 
     //constructor needs to explicitly take props and pass to super
     //otherwise you can't access props thorought the component
@@ -21,6 +22,7 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
     constructor(props: ThreeModelProps) {
         super(props);
         this.mount = React.createRef();
+        this.cover = React.createRef();
         ThreeModelState: this.state = {
             scene: new THREE.Scene(),
         };
@@ -29,42 +31,57 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
     //load geometry once (is heavy) > memo it
     //rerender scene as needed
     componentDidUpdate(prevProps) {
-        if(!prevProps.background || prevProps.background !== this.props.background){
+
+
+        if (!prevProps.background || prevProps.background !== this.props.background) {
             //darkmode
-            if(this.props.background === "dark"){
+            if (this.props.background === "dark") {
                 this.state.scene.background = new THREE.Color('black');
             }
-            else{ //light mode
+            else { //light mode
                 this.state.scene.background = new THREE.Color('white');
             }
         }
     }
 
-    
+
 
     componentDidMount() {
+        const manager = new THREE.LoadingManager();
+       
+
+        manager.onLoad = () => {
+            this.cover.current.style.display = 'none';
+        };
+
+        manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+            console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+        };
+
+        manager.onError = function (url) {
+            console.log('There was an error loading ' + url);
+        };
         let scene = this.state.scene;
         //we need to do this, because componentDidUpdate is only called on update and not on first render
-        if(this.props.background === "dark"){
+        if (this.props.background === "dark") {
             scene.background = new THREE.Color('black');
         }
-        else{
+        else {
             scene.background = new THREE.Color('white');
         }
 
-        const loader = new GLTFLoader();
+        const loader = new GLTFLoader(manager);
         let camera = new THREE.PerspectiveCamera(75, this.mount.current.offsetWidth / this.mount.current.offsetHeight, 0.1, 1000)
         let renderer = new THREE.WebGLRenderer();
-        const controls = new OrbitControls( camera, renderer.domElement );
+        const controls = new OrbitControls(camera, renderer.domElement);
         renderer.setSize(this.mount.current.offsetWidth, this.mount.current.offsetHeight)
         //needs to be an arrow function because this ref
-        let onWindowResize =  () => {
-
-            camera.aspect = this.mount.current.offsetWidth / this.mount.current.offsetHeight;
-            camera.updateProjectionMatrix();
-
-            renderer.setSize(this.mount.current.offsetWidth, this.mount.current.offsetHeight);
-
+        let onWindowResize = () => {
+            if (this.mount.current) {
+                camera.aspect = this.mount.current.offsetWidth / this.mount.current.offsetHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(this.mount.current.offsetWidth, this.mount.current.offsetHeight);
+            }
         }
 
         this.mount.current.appendChild(renderer.domElement)
@@ -74,7 +91,7 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
         const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
 
-        loader.load('/bradpad_welded.gltf', function (gltf) {
+        loader.load('./bradpad_welded.gltf', function (gltf) {
             const box = new THREE.Box3().setFromObject(gltf.scene);
             //center does not officially exist
             box.getCenter(gltf.scene.position);
@@ -114,7 +131,12 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
     }
     render() {
         return (
-            <div ref={this.mount} style={{ cursor: 'pointer', width: `100%`, height: `60vh` }}></div>
+            <>  
+                <div style={{position: 'relative'}}>
+                    <div  ref={this.cover} style={{zIndex: 2, position: 'absolute', cursor: 'pointer', width: `100%`, height: `60vh`, backgroundColor: this.props.background === "dark" ? "black" : "white" }}></div>
+                </div>
+                <div ref={this.mount} style={{ cursor: 'pointer', width: `100%`, height: `60vh`, backgroundColor: this.props.background === "dark" ? "black" : "white" }}></div>
+            </>
         );
     }
 

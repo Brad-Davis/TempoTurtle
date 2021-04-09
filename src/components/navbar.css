@@ -24,7 +24,7 @@
 
 
 .navItems a:hover{
-    color: #5CDB95;
+    color: #5CDB95 !important;
 }
 
 
