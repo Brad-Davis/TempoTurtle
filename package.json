@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "tempoturtle",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Tempo Turtle's Official Website",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -24,6 +24,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
+    "react-multi-carousel": "^2.6.2",
     "react-three-fiber": "^5.3.21",
     "styled-components": "^5.2.3",
     "three": "^0.126.1"

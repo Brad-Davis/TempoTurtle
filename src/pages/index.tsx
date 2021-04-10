@@ -4,10 +4,12 @@ import HomeScreen from "../components/HomeScreen";
 import Product from "../components/Product";
 import About from "../components/About";
 import Contact from "../components/Contact";
+import Gallery from "../components/Gallery";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../components/GlobalStyle.js";
 import { lightTheme, darkTheme } from "../components/Themes.js"
 import './index.css'
+
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
@@ -23,6 +25,7 @@ export default function Home() {
       <Product />
       <About theme={theme}/>
       <Contact theme={theme}/>
+      <Gallery theme={theme}/>
     </ThemeProvider>
   </div>
 }
