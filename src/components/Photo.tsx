@@ -13,6 +13,7 @@ type PhotoProps = {
 
 type PhotoState = {
     zoomed: boolean;
+    loaded: boolean;
 };
 
 export default class Photo extends Component<PhotoProps, PhotoState>{
@@ -21,12 +22,13 @@ export default class Photo extends Component<PhotoProps, PhotoState>{
         super(props);
         PhotoState: this.state = {
             zoomed: false,
+            loaded: false
         };
     }
 
     zoom(event: React.SyntheticEvent){
         event.preventDefault();
-        this.setState({zoomed: !this.state.zoomed});
+        this.setState({zoomed: !this.state.zoomed, loaded: this.state.loaded});
         console.log("zoomies");
     }
 
@@ -41,14 +43,25 @@ export default class Photo extends Component<PhotoProps, PhotoState>{
         return;
     }
 
+    imgloader(event: React.SyntheticEvent){
+        event.preventDefault();
+        this.setState({zoomed: this.state.zoomed, loaded: true})
+    }
+
     render(){
         return (
             <div 
                 className="photo" 
-                //onClick={this.zoom.bind(this)} style={this.props.style}
+                //onClick={this.zoom.bind(this)}
+                style={this.props.style}
             >
-                <img src={this.props.thb ? this.props.thb : this.props.src} className='photoimg'/>
-                //{this.box()}
+                {this.state.loaded ? <React.Fragment/> : <span>...</span>}
+                <img
+                    src={this.props.thb ? this.props.thb : this.props.src}
+                    className='photoimg'
+                    style = {this.state.loaded ? {display:'inline'} : {display:'none'}}
+                    onLoad={this.imgloader.bind(this)}
+                />
             </div>
         );
     }

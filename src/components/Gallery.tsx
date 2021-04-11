@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
 import './Gallery.css';
 
+import { useInView } from 'react-intersection-observer';
 import Photo from './Photo';
 
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
-const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3 // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2 // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1 // optional, default to 1.
-    }
-};
-
 type GalleryProps = {
-    theme: String
+    theme: String,
+    preload?: number,
 };
 
-type GalleryState = {};
+type GalleryState = {
+    photoSrcs: Array<string>,
+    photoSrcGen: Generator,
+    finished: boolean,
+};
 
 const range = function* (end: number, start:number=0, step:number=1){
     let count = start;
@@ -39,28 +24,64 @@ const range = function* (end: number, start:number=0, step:number=1){
     return;
 }
 
+const photogen = function* (iter: Generator){
+    let cur = iter.next();
+    while(!cur.done){
+        yield `./bradpad_photos/${cur.value}.JPG`;
+        cur = iter.next();
+    }
+}
+
 export default class Gallery extends Component<GalleryProps, GalleryState> {
-    
-    render() {
-        const images: Array<JSX.Element> = [];
-        const last = 17;
+    constructor(props){
+        super(props);
         const first = 1;
+        const last = 17;
         const iter = range(last+1, first);
-        let cur = iter.next();
-        while(!cur.done){
-            images.push(
-                <Photo
-                    src={`./bradpad_photos/${cur.value}.JPG`}
-                    style={{width:'50%', margin:'auto'}}
-                />
-            );
-            cur=iter.next();
+        const pgen =  photogen(iter);
+        const preload = props.preload ? props.preload : 3;
+        const preloaded = new Array<string>(); 
+        for(let i = 0; i < preload; i++){
+            let val = pgen.next().value;
+            if(val){
+                preloaded.push(
+                    val  
+                );
+            }
         }
-        console.log(images);
+        this.state = {
+            photoSrcs: preloaded,
+            photoSrcGen: pgen,
+            finished: false,
+        }
+    }
+    
+    loadAdditionalPhoto(){
+        let toLoad = this.state.photoSrcGen.next();
+        if(!toLoad.done){
+            let newPhotoSrcs = this.state.photoSrcs.concat(toLoad.value);
+            this.setState({photoSrcs: newPhotoSrcs});
+        }
+        else{
+            this.setState({finished: true});
+        }
+    }
+
+    render() {
+        console.log(this.state.photoSrcs);
         return (
             <div id="gallery" style={{margin:'auto'}}>
                 <h2 className='title textCenter' style={{fontSize: '4em'}}>photos!</h2>
-                {images}
+                {this.state.photoSrcs.map((src, index) => {
+                    return(
+                        <React.Fragment key={index}>
+                            <Photo src={src}/>
+                        </React.Fragment>
+                    );
+                })}
+                {this.state.finished ? 
+                    <div id="all_photos_loaded"> All Done! </div> :
+                    <div id="scroll_detector"/> } 
             </div>
         )
     }
