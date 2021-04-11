@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Gallery.css';
 
+import Photo from './Photo';
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -47,9 +49,9 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
         let cur = iter.next();
         while(!cur.done){
             images.push(
-                <img
+                <Photo
                     src={`./bradpad_photos/${cur.value}.JPG`}
-                    width='100%'
+                    style={{width:'50%', margin:'auto'}}
                 />
             );
             cur=iter.next();
@@ -58,11 +60,7 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
         return (
             <div id="gallery" style={{margin:'auto'}}>
                 <h2 className='title textCenter' style={{fontSize: '4em'}}>photos!</h2>
-                <Carousel
-                    responsive={responsive}
-                >
-                    {images.map(img => img)}
-                </Carousel>
+                {images}
             </div>
         )
     }
