@@ -55,7 +55,7 @@ export default class Photo extends Component<PhotoProps, PhotoState>{
                 //onClick={this.zoom.bind(this)}
                 style={this.props.style}
             >
-                {this.state.loaded ? <React.Fragment/> : <span>...</span>}
+                {this.state.loaded ? <React.Fragment/> : <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
                 <img
                     src={this.props.thb ? this.props.thb : this.props.src}
                     className = {this.state.loaded ? 'photoimg' : 'photoimg loading' } 

@@ -25,7 +25,6 @@ export default function Home() {
       <Product />
       <About theme={theme}/>
       <Contact theme={theme}/>
-      <Gallery theme={theme}/>
     </ThemeProvider>
   </div>
 }

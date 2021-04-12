@@ -21,9 +21,15 @@ export default class Product extends Component {
                         jam <br/> away <br/> anywhere
                     </div>
                 </div>
-                <div>
-                    <img />
-                    <img />
+                <div style={{paddingTop: '3em'}} className="container">
+                    <div style={{alignItems: 'center', textAlign: 'center'}} className="row">
+                        <div className="col-6"><img className="photoimg" src="./bradpad_photos/2.jpg"/></div>
+                        <div className="col-6 twoColTitle">A MIDI controller<br />for the masses</div>
+                    </div>
+                    <div style={{alignItems: 'center', textAlign: 'center'}} className="row">
+                        <div className="col-6 twoColTitle">Customize your<br />look and feel</div>
+                        <div className="col-6"><img className="photoimg" src="./bradpad_photos/1.jpg"/></div>
+                    </div>
                 </div>
             </div>
         )

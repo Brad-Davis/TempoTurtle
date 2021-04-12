@@ -19,7 +19,7 @@ export default class Navbar extends Component<NavbarProps, NavbarState> {
                     <div className="navItems">
                         <ul>
                             <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#product")}>product</a></li>
-                            <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#about")}>about us</a></li>
+                            <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#about")}>about</a></li>
                             <li><a style={{color: this.props.theme == 'light' ? 'black' : 'white'}} href="javascript:void(0);" onClick={() => scrollTo("#contact")}>contact</a></li>
                             <li>
                                 <div className="settings">

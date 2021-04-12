@@ -6,6 +6,7 @@ import Photo from './Photo';
 
 type GalleryProps = {
     theme: String,
+    toload?: Array<string>
     preload?: number,
 };
 
@@ -13,6 +14,8 @@ type GalleryState = {
     photoSrcs: Array<string>,
     photoSrcGen: Generator,
     finished: boolean,
+    //list of things that are loaded
+    loaded?: Array<string>
 };
 
 const range = function* (end: number, start:number=0, step:number=1){
@@ -31,6 +34,14 @@ const photogen = function* (iter: Generator){
         cur = iter.next();
     }
 }
+
+//THIS IS AN BAD DESIGN PATTERN FOR REACT
+//INSTEAD OF GALLERY CREATING THE LIST OF 
+//IMAGES, IT SHOULD BE PASSED A LIST AS A
+//PROP INSTEAD
+//
+//THERE'S SOME ISSUES WITH STATE MUTABILTY
+//WITH THE CURRENT IMPLIMENTATION
 
 export default class Gallery extends Component<GalleryProps, GalleryState> {
     constructor(props){
@@ -80,7 +91,12 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
                         </React.Fragment>
                     );
                 })}
-                <Observer onChange={this.loadAdditionalPhoto.bind(this)} threshold={0.5}>
+                
+                <Observer
+                    onChange={this.loadAdditionalPhoto.bind(this)}
+                    threshold={0.5}
+                    disabled={false}//should be true when a photo is loading, and false when photos are loaded.
+                >
                     <div className='textCenter loadObserver'>
                         {this.state.finished ?
                             "No More Photos" :

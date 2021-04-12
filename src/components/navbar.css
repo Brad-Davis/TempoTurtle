@@ -38,5 +38,18 @@
     display: inline;
 }
 
+@media only screen and (max-width: 800px){
+    .logo{
+        margin: auto;
+    }
+    .navItems{
+        width: 100%;
+        font-size: 1rem;
+    }
+    .navItems a{
+        font-size: 1.25rem;
+    }
+}
+
 
 
