@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Gallery.css';
 
-import { useInView } from 'react-intersection-observer';
+import Observer from '@researchgate/react-intersection-observer';
 import Photo from './Photo';
 
 type GalleryProps = {
@@ -56,7 +56,8 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
         }
     }
     
-    loadAdditionalPhoto(){
+    loadAdditionalPhoto(event: React.SyntheticEvent){
+        //event.preventDefault();
         let toLoad = this.state.photoSrcGen.next();
         if(!toLoad.done){
             let newPhotoSrcs = this.state.photoSrcs.concat(toLoad.value);
@@ -79,9 +80,13 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
                         </React.Fragment>
                     );
                 })}
-                {this.state.finished ? 
-                    <div id="all_photos_loaded"> All Done! </div> :
-                    <div id="scroll_detector"/> } 
+                <Observer onChange={this.loadAdditionalPhoto.bind(this)}>
+                    <div>
+                        {this.state.finished ?
+                            "No More Photos" :
+                            "Loading More Photos!" }
+                    </div>
+                </Observer>
             </div>
         )
     }
