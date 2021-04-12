@@ -56,15 +56,15 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
         }
     }
     
-    loadAdditionalPhoto(event: React.SyntheticEvent){
-        //event.preventDefault();
+    loadAdditionalPhoto(){
+        //event.preventDefault();3
         let toLoad = this.state.photoSrcGen.next();
         if(!toLoad.done){
             let newPhotoSrcs = this.state.photoSrcs.concat(toLoad.value);
-            this.setState({photoSrcs: newPhotoSrcs});
+            this.setState({photoSrcs: newPhotoSrcs, photoSrcGen: this.state.photoSrcGen});
         }
         else{
-            this.setState({finished: true});
+            this.setState({finished: true,  photoSrcGen: this.state.photoSrcGen});
         }
     }
 
@@ -80,8 +80,8 @@ export default class Gallery extends Component<GalleryProps, GalleryState> {
                         </React.Fragment>
                     );
                 })}
-                <Observer onChange={this.loadAdditionalPhoto.bind(this)}>
-                    <div>
+                <Observer onChange={this.loadAdditionalPhoto.bind(this)} threshold={0.5}>
+                    <div className='textCenter loadObserver'>
                         {this.state.finished ?
                             "No More Photos" :
                             "Loading More Photos!" }

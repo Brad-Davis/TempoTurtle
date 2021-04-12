@@ -58,8 +58,8 @@ export default class Photo extends Component<PhotoProps, PhotoState>{
                 {this.state.loaded ? <React.Fragment/> : <span>...</span>}
                 <img
                     src={this.props.thb ? this.props.thb : this.props.src}
-                    className='photoimg'
-                    style = {this.state.loaded ? {display:'inline'} : {display:'none'}}
+                    className = {this.state.loaded ? 'photoimg' : 'photoimg loading' } 
+                    style = {this.state.loaded ? {display:'block'} : {display:'none'}}
                     onLoad={this.imgloader.bind(this)}
                 />
             </div>
