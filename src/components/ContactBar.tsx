@@ -33,6 +33,7 @@ export default class ContactBar extends Component<ContactBarProps, ContactBarSta
           </a>
         </div>
         <div>
+          <a href="https://www.instagram.com/tempo.turtle/">
           <svg
             width="74"
             height="74"
@@ -47,8 +48,10 @@ export default class ContactBar extends Component<ContactBarProps, ContactBarSta
               fill={this.props.theme == 'light' ? 'black' : 'white'}
             />
           </svg>
+          </a>
         </div>
         <div>
+          <a href="https://twitter.com/tempo_turtle">
           <svg
             width="71"
             height="71"
@@ -61,9 +64,10 @@ export default class ContactBar extends Component<ContactBarProps, ContactBarSta
               fill={this.props.theme == 'light' ? 'black' : 'white'}
             />
           </svg>
+          </a>
         </div>
         <div>
-          <a href="https://discord.gg/6CbKrJXadm">
+          <a target="_blank" href="https://discord.gg/6CbKrJXadm">
             <svg
               width="73"
               height="73"

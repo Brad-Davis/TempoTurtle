@@ -1,5 +1,5 @@
 svg{
-    transition: transform 0.1s ease;
+    transition: transform 0.2s ease;
 }
 
 svg:hover path{
@@ -7,7 +7,7 @@ svg:hover path{
 }
 
 svg:active{
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 
 
