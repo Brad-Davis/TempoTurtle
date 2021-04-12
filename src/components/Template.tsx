@@ -8,10 +8,12 @@ type TemplateProps = {
 
 type TemplateState = {};
 
-export default class Template extends Component<TemplateProps, TemplateState>{
+export default class Template extends Component<TemplateProps, TemplateProps>{
     render(){
         return (
-            <div></div>
+            <div>
+                
+            </div>
         );
     }
 }
