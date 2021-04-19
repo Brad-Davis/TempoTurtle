@@ -1,0 +1,66 @@
+svg {
+    transition: transform 0.2s ease;
+}
+
+svg:hover path {
+    fill: #5CDB95;
+}
+
+svg:active {
+    transform: rotate(360deg);
+}
+
+path {
+    transition: fill 0.5s ease;
+}
+
+.svgBackground {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    border-radius: 1em 1em 0 0;
+    margin-top: -5px;
+    z-index: 1;
+    transition: background-color 0.4s ease;
+}
+
+.settingsMenu {
+    width: 330px;
+    background-color: #c4c4c4;
+    padding: 0.5em;
+    color: black !important;
+    position: absolute;
+    margin-left: -270px;
+    visibility: hidden;
+    z-index: 1;
+    border-radius: 1em 0 1em 1em;
+    opacity: 0;
+    /* box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.settingsMenu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.svgBackground.active {
+    background-color: #c4c4c4;
+}
+
+.settingsMenu div {
+    width: 100%;
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+    #gear {
+        width: 22px !important;
+        margin-top: -4px;
+    }
+    .settingsMenu {
+        width: 280px;
+        margin-left: -238px;
+    }
+}

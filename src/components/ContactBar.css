@@ -1,0 +1,31 @@
+.contactIcons div {
+    display: inline-block;
+    margin-left: 2em;
+    margin-right: 2em;
+    cursor: pointer;
+}
+
+.contactIcons {
+    width: 100%;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 6em;
+}
+
+.contactIcons div svg path {
+    transition: fill 0.5s ease;
+}
+
+.contactIcons div:hover svg path {
+    fill: #5CDB95;
+}
+
+@media only screen and (max-width: 800px) {
+    .contactIcons div svg {
+        transform: scale(0.7);
+    }
+    .contactIcons div {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
+}
