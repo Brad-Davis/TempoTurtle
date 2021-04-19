@@ -15,7 +15,6 @@ function Settings(props) {
     const onClick = () => setIsActive(!isActive);
 
 
-
     const onClickFont = () => {
         setDyslexic(!Dyslexic);
         console.log(Dyslexic);
