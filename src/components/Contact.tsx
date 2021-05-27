@@ -11,9 +11,9 @@ export default class Contact extends Component<ContactProps, ContactState> {
     render() {
         return (
             <div id="contact">
-                <h1 style={{marginTop: '2em', marginBottom: "0.5em", fontSize: "4rem"}} className="title textCenter">contact us</h1>
+                <h1 style={{ marginTop: '1em', marginBottom: "0.5em", }} className="title textCenter">contact us</h1>
                 <div>
-                    <ContactBar theme={this.props.theme}/>
+                    <ContactBar theme={this.props.theme} />
                 </div>
             </div>
         )

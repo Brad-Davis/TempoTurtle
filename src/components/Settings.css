@@ -1,21 +1,20 @@
-svg{
+svg {
     transition: transform 0.2s ease;
 }
 
-svg:hover path{
+svg:hover path {
     fill: #5CDB95;
 }
 
-svg:active{
+svg:active {
     transform: rotate(360deg);
 }
 
-
-path{
+path {
     transition: fill 0.5s ease;
 }
 
-.svgBackground{
+.svgBackground {
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -24,12 +23,9 @@ path{
     margin-top: -5px;
     z-index: 1;
     transition: background-color 0.4s ease;
-    
 }
 
-
-
-.settingsMenu{
+.settingsMenu {
     width: 330px;
     background-color: #c4c4c4;
     padding: 0.5em;
@@ -51,12 +47,20 @@ path{
 
 .svgBackground.active {
     background-color: #c4c4c4;
-    
 }
 
-.settingsMenu div{
+.settingsMenu div {
     width: 100%;
     font-size: 2rem;
 }
 
-
+@media only screen and (max-width: 800px) {
+    #gear {
+        width: 22px !important;
+        margin-top: -4px;
+    }
+    .settingsMenu {
+        width: 280px;
+        margin-left: -238px;
+    }
+}

@@ -1,29 +1,32 @@
-body{
+body {
     font-family: 'Open Sans', sans-serif;
     color: black;
     overflow-x: hidden;
 }
 
-.title{
+.title {
     font-family: 'Fascinate', cursive;
+    font-size: 4rem;
 }
 
-h1{
-    font-size: 5rem;
-}
-
-h3{
+h3 {
     font-size: 2rem;
 }
 
-.textCenter{
+h1 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.textCenter {
     width: 100%;
     text-align: center;
 }
 
-
-
-.container{
+.container {
     width: 80%;
     margin: 0 auto;
 }
@@ -33,16 +36,22 @@ h3{
     src: url("../../static/OpenDyslexic-Regular.otf");
 }
 
-.dyslexiaFont{
+.dyslexiaFont {
     font-family: "Open Dyslexic";
 }
 
-.bigFont{
+.bigFont {
     font-size: 48px !important;
 }
 
 @media only screen and (max-width: 1100px) {
-    .container{
+    .container {
         width: 100%;
+    }
+    .title {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 1.25rem;
     }
 }

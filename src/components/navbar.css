@@ -1,19 +1,18 @@
-.navItems ul{
+.navItems ul {
     display: flex;
-  justify-content: space-between;
-  padding-inline-start: 10px;
-  padding-inline-end: 10px;
+    justify-content: space-between;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
     /* Any other CSS you want */
 }
-.navItems li{
+
+.navItems li {
     display: inline-block;
-    
     margin-left: 1em;
     margin-right: 1em;
-    
 }
 
-.navItems a{
+.navItems a {
     cursor: pointer;
     text-decoration: none;
     transition: color 0.5s ease;
@@ -21,35 +20,31 @@
     color: black;
 }
 
-
-
-.navItems a:hover{
+.navItems a:hover {
     color: #5CDB95 !important;
 }
 
-
-
-
-.navbar{
+.navbar {
     width: 100%;
 }
 
-.logo{
+.logo {
     display: inline;
 }
 
-@media only screen and (max-width: 800px){
-    .logo{
+@media only screen and (max-width: 800px) {
+    .logo {
         margin: auto;
     }
-    .navItems{
+    .navItems {
         width: 100%;
         font-size: 1rem;
     }
-    .navItems a{
+    .navItems a {
         font-size: 1.25rem;
     }
+    .navItems li {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
 }
-
-
-

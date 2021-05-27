@@ -8,9 +8,10 @@
 .threeColTitle {
     font-size: 3rem;
     text-align: center;
+    line-height: 1.2em;
 }
 
-.twoColTitle{
+.twoColTitle {
     line-height: 1.25;
     font-size: 2.5rem;
 }
@@ -46,9 +47,11 @@
     .threeColTitle {
         font-size: 2rem;
     }
-    .twoColTitle{
-
+    .twoColTitle {
         font-size: 1.5rem;
+    }
+    .videoContainer {
+        padding: 1.5em
     }
 }
 
@@ -56,8 +59,7 @@
     .threeColTitle {
         font-size: 1.25rem;
     }
-
-    .twoColTitle{
+    .twoColTitle {
         font-size: 1rem;
     }
 }
