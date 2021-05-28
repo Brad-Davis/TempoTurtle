@@ -55,11 +55,11 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
         };
 
         manager.onProgress = function (url, itemsLoaded, itemsTotal) {
-            console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+            //console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
         };
 
         manager.onError = function (url) {
-            console.log('There was an error loading ' + url);
+            console.error('There was an error loading ' + url);
         };
         let scene = this.state.scene;
         //we need to do this, because componentDidUpdate is only called on update and not on first render
@@ -101,7 +101,7 @@ class ThreeModel extends Component<ThreeModelProps, ThreeModelState> {
 
             scene.add(pivot);
             pivot.add(gltf.scene);
-            console.log(gltf);
+            //console.log(gltf);
             camera.position.z = 200
             // gltf.scene.position.x += (gltf.scene.position.x - center.x);
             // gltf.scene.position.y += (gltf.scene.position.y - center.y);

@@ -7,7 +7,7 @@ export default class Product extends Component {
             <div id="product">
                 <div className="videoContainer">
                     <div className="video-responsive">
-                        <iframe width="420" height="315" src="https://www.youtube.com/watch?v=v3fvVJyQHCg" frameBorder="0" allowFullScreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/v3fvVJyQHCg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen={true}></iframe>
                     </div>
                 </div>
                 <div className="row container">

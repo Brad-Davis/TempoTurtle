@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { Helmet } from 'react-helmet';
 import Navbar from "../components/Navbar";
 import HomeScreen from "../components/HomeScreen";
 import Product from "../components/Product";
@@ -14,17 +15,21 @@ import './index.css'
 export default function Home() {
   const [theme, setTheme] = useState('light');
   const themeToggler = () => {
-    console.log(theme)
+    //console.log(theme)
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
   return <div>
+    <Helmet>
+      <meta charSet='utf-8'/>
+      <title>Tempo Turtle</title>
+    </Helmet>
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <Navbar themeToggler={themeToggler} theme={theme}/>
-      <HomeScreen background={theme}/>
+      <Navbar themeToggler={themeToggler} theme={theme} />
+      <HomeScreen background={theme} />
       <Product />
-      <About theme={theme}/>
-      <Contact theme={theme}/>
+      <About theme={theme} />
+      <Contact theme={theme} />
     </ThemeProvider>
   </div>
 }
