@@ -24,11 +24,17 @@ module.exports = {
         name: "Tempo Turtle",
         short_name: "Tempo Turtle",
         start_url: "/",
-        icon: "favicon.ico", // This path is relative to the root of the site.
+        icon: `logo.svg`, // This path is relative to the root of the site.
         // An optional attribute which provides support for CORS check.
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`
         crossOrigin: `use-credentials`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        icon: `logo.svg`
       }
     },
     `gatsby-plugin-smoothscroll`, `gatsby-plugin-styled-components`,`gatsby-plugin-react-helmet`
