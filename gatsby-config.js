@@ -9,6 +9,22 @@ module.exports = {
   pathPrefix: "/",
   plugins: [
     {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {},
+        // Set to false to allow builds to continue on image errors
+        failOnError: true,
+        // deprecated options and their defaults:
+        base64Width: 20,
+        forceBase64Format: `webp`, // valid formats: png,jpg,webp
+        useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
+        stripMetadata: true,
+        defaultQuality: 50,
+        icon: `logo.svg`
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`, 
       options: {
         fonts: [
@@ -29,12 +45,6 @@ module.exports = {
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`
         crossOrigin: `use-credentials`
-      }
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        icon: `logo.svg`
       }
     },
     `gatsby-plugin-smoothscroll`, `gatsby-plugin-styled-components`,`gatsby-plugin-react-helmet`
