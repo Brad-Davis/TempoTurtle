@@ -31,6 +31,33 @@ export default class Product extends Component {
                         <div className="col-6"><img className="photoimg" src="./1.jpg" /></div>
                     </div>
                 </div>
+                <div
+                    style={{
+                        display:'flex',
+                        flexDirection:'column',
+                        paddingTop: '6em'
+                    }}
+                >
+                    <div
+                        style={{
+                            display:'flex',
+                            justifyContent:'center',
+                            width: '100%',
+                            fontSize: '2.5rem'
+                        }}
+                    >
+                        Buy a &nbsp; <span style={{fontFamily:'Fascinate, cursive'}}> bradpad </span>
+                    </div>
+                    <div
+                        style={{
+                            display:'flex',
+                            justifyContent:'center',
+                            width: '100%'
+                        }}
+                    >
+                    <a href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"><img src='1up.svg'/></a>
+                    </div>
+                </div>
             </div>
         )
     }

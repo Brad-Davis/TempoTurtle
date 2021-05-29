@@ -6,8 +6,21 @@ import ThreeModel from './ThreeModel';
 function HomeScreen(props) {
   return (
     <div id="home">
-      <div>
-        <ThreeModel background={props.background} />
+      <div
+        style={{
+          display:'flex',
+          justifyContent:'center',
+          width: '100%'
+        }}
+      >
+        <div className='threewrapper'
+          style={{
+            maxWidth:'1000px',
+            width:'100%'
+          }}
+        >
+          <ThreeModel background={props.background} />
+        </div>
       </div>
       <div>
         <h1 className="title textCenter">bradpad</h1>
