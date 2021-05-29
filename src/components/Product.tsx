@@ -18,7 +18,7 @@ export default class Product extends Component {
                         no music <br /> theory <br /> needed
                     </div>
                     <div className="col threeColTitle">
-                        jam <br /> away <br /> anywhere
+                        inovate <br /> jam <br /> repeat
                     </div>
                 </div>
                 <div style={{ paddingTop: '3em' }} className="container">

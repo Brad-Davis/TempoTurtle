@@ -25,12 +25,8 @@ function HomeScreen(props) {
       <div>
         <h1 className="title textCenter">bradpad</h1>
         <h3 className="textCenter">
-          Our first product as tempo turtle!
-            <br />
-             Learn more about how our musical
-            <br />
-            macropad can
-          </h3>
+          A musical macropad.
+        </h3>
       </div>
     </div>
 
