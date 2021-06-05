@@ -55,7 +55,16 @@ export default class Product extends Component {
                             width: '100%'
                         }}
                     >
-                    <a href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"><img src='1up.svg'/></a>
+                    <a
+                        href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"
+                        style = {{
+                            padding: "10px 10px 10px 10px",
+                            backgroundColor: 'white',
+                            borderRadius:'5px',
+                        }}
+                    >
+                        <img src='1up.svg'/>
+                    </a>
                     </div>
                 </div>
             </div>
