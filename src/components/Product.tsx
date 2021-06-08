@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
+import OneUp from './OneUp';
 import "./product.css"
 
-export default class Product extends Component {
+type ProductProps = {
+    theme: String
+};
+
+type ProductState = {};
+
+export default class Product extends Component<ProductProps, ProductState> {
     render() {
         return (
             <div id="product">
@@ -33,38 +40,38 @@ export default class Product extends Component {
                 </div>
                 <div
                     style={{
-                        display:'flex',
-                        flexDirection:'column',
+                        display: 'flex',
+                        flexDirection: 'column',
                         paddingTop: '6em'
                     }}
                 >
                     <div
                         style={{
-                            display:'flex',
-                            justifyContent:'center',
+                            display: 'flex',
+                            justifyContent: 'center',
                             width: '100%',
                             fontSize: '2.5rem'
                         }}
                     >
-                        Buy a &nbsp; <span style={{fontFamily:'Fascinate, cursive'}}> bradpad </span>
+                        Buy a &nbsp; <span style={{ fontFamily: 'Fascinate, cursive' }}> bradpad </span>
                     </div>
                     <div
                         style={{
-                            display:'flex',
-                            justifyContent:'center',
+                            display: 'flex',
+                            justifyContent: 'center',
                             width: '100%'
                         }}
                     >
-                    <a
-                        href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"
-                        style = {{
-                            padding: "10px 10px 10px 10px",
-                            backgroundColor: 'white',
-                            borderRadius:'5px',
-                        }}
-                    >
-                        <img src='1up.svg'/>
-                    </a>
+                        <a
+                            href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"
+                            style={{
+                                padding: "10px 10px 10px 10px",
+                                borderRadius: '5px',
+                            }}
+                        >
+                            <OneUp theme={this.props.theme} />
+                            {/* <img style={{ color: this.props.theme == 'light' ? 'black' : 'white' }} src='1up.svg' /> */}
+                        </a>
                     </div>
                 </div>
             </div>
