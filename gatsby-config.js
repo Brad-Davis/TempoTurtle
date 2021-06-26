@@ -21,7 +21,7 @@ module.exports = {
         useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
         stripMetadata: true,
         defaultQuality: 50,
-        icon: `logo.svg`
+        icon: `static/favicon.ico`
       }
     },
     {
@@ -40,7 +40,7 @@ module.exports = {
         name: "Tempo Turtle",
         short_name: "Tempo Turtle",
         start_url: "/",
-        icon: `logo.svg`, // This path is relative to the root of the site.
+        icon: `favicon-32x32.png`, // This path is relative to the root of the site.
         // An optional attribute which provides support for CORS check.
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`

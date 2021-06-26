@@ -1,0 +1,15 @@
+#download a{
+    width: 100%;
+    text-align: center;
+    margin-top: 1em;
+    font-family: 'Fascinate', cursive;
+    font-size: 4rem;
+    display: block;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+#download a:hover{
+    color: #5CDB95;
+    cursor: pointer;
+}

@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
+import { Link } from "gatsby"
+import OneUp from './OneUp';
 import "./product.css"
 
-export default class Product extends Component {
+type ProductProps = {
+    theme: String
+};
+
+type ProductState = {};
+
+export default class Product extends Component<ProductProps, ProductState> {
     render() {
         return (
             <div id="product">
@@ -18,7 +26,7 @@ export default class Product extends Component {
                         no music <br /> theory <br /> needed
                     </div>
                     <div className="col threeColTitle">
-                        jam <br /> away <br /> anywhere
+                        innovate <br /> jam <br /> repeat
                     </div>
                 </div>
                 <div style={{ paddingTop: '3em' }} className="container">
@@ -30,6 +38,45 @@ export default class Product extends Component {
                         <div className="col-6 twoColTitle">Customize your<br />look and feel</div>
                         <div className="col-6"><img className="photoimg" src="./1.jpg" /></div>
                     </div>
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        paddingTop: '6em'
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: '100%',
+                            fontSize: '2.5rem'
+                        }}
+                    >
+                        Buy a &nbsp; <span style={{ fontFamily: 'Fascinate, cursive' }}> bradpad </span>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: '100%'
+                        }}
+                    >
+                        <a
+                            href="https://1upkeyboards.com/shop/keyboard-kits/macro-pads/bradpad-macropad-by-tempo-turtle/"
+                            style={{
+                                padding: "10px 10px 10px 10px",
+                                borderRadius: '5px',
+                            }}
+                        >
+                            <OneUp theme={this.props.theme} />
+                            {/* <img style={{ color: this.props.theme == 'light' ? 'black' : 'white' }} src='1up.svg' /> */}
+                        </a>
+                        
+                    </div>
+                    <br></br>
+                        <Link className="linkNormal" to="/downloads">Firmware Downloads</Link>
                 </div>
             </div>
         )

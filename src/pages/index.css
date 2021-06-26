@@ -44,6 +44,20 @@ h3 {
     font-size: 48px !important;
 }
 
+.linkNormal{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 2.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    color: black;
+}
+.linkNormal:hover{
+    color: #5CDB95 !important;
+}
+
 @media only screen and (max-width: 1100px) {
     .container {
         width: 100%;
