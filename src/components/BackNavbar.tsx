@@ -14,8 +14,8 @@ export default class BackNavbar extends Component<NavbarProps, NavbarState> {
         return (
             <div>
                 <div className="navbar">
-                    <div className="logo"><Logo theme={this.props.theme}/></div>
-                    <div className="navItems">
+                    <div className="logo"><Logo theme={this.props.theme} /></div>
+                    <div className="navItems" style={{ justifyContent: 'center' }}>
                         <ul>
                             <li>
                                 <Link to="/">Go Back Home</Link>

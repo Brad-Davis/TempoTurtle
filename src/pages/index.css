@@ -44,7 +44,7 @@ h3 {
     font-size: 48px !important;
 }
 
-.linkNormal{
+.linkNormal {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -53,8 +53,10 @@ h3 {
     text-decoration: none;
     transition: color 0.5s ease;
     color: black;
+    text-align: center;
 }
-.linkNormal:hover{
+
+.linkNormal:hover {
     color: #5CDB95 !important;
 }
 
@@ -62,9 +64,11 @@ h3 {
     .container {
         width: 100%;
     }
+
     .title {
         font-size: 3rem;
     }
+
     h3 {
         font-size: 1.25rem;
     }
